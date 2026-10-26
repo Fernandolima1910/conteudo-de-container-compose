@@ -1,0 +1,30 @@
+
+#Esse é o modelo do documento para se utilizar o serviços do Nginx sendo as unicas alterações os nomes das variaveis, pastas, e o nome do container
+
+services:  
+  main: #possivel de mudança
+    image: nginx:alpine
+    container_name: main_container #possivel de mudança
+    ports:
+      - "8081:80"
+    volumes:
+      - ./main:/usr/share/nginx/html/:ro #possivel de mudança
+    restart: always
+
+  user:
+    image: nginx:alpine
+    container_name: user_container
+    ports:
+      - "8082:80"
+    volumes:
+      - ./user:/usr/share/nginx/html/:ro
+    restart: always
+
+  fac:
+    image: nginx:alpine
+    container_name: fac_container
+    ports:
+      - "8083:80"
+    volumes:
+      - ./fac:/usr/share/nginx/html/:ro
+    restart: always
