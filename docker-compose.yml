@@ -1,17 +1,20 @@
 
 #Esse é o modelo do documento para se utilizar o serviços do Nginx sendo as unicas alterações os nomes das variaveis, pastas, e o nome do container
 
+#obs: a posição da estrura, pouco importa para o funcionamento, mas seguir essa logica facilita um pouco
+
 services:  
   main: #possivel de mudança
-    image: nginx:alpine
+    image: nginx:alpine #image é a parte que cria o documento utilizando o NGINX
     container_name: main_container #possivel de mudança
-    ports:
+    ports: #estou setando as porta utilizando o "8080 porta do docker" : "80 porta do roteador"
       - "8081:80"
-    volumes:
+    volumes: #estou mostrando a pasta que estou utilizando  e passando o endereço correto da pasta do NGINX
       - ./main:/usr/share/nginx/html/:ro #possivel de mudança
-    restart: always
+    restart: always #estou guardando o meu codigo para não ser enviado para o servidor, e ser apagago após apagar, principio basico do docker
+    
 
-  user:
+  user: #literalmente as mesmas coisas lá de cima, so mudou os nomes para cada container/pasta
     image: nginx:alpine
     container_name: user_container
     ports:
